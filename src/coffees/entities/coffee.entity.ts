@@ -1,9 +1,11 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinTable,
   ManyToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { Flavor } from './flavor.entity';
 
@@ -27,4 +29,10 @@ export class Coffee {
   @JoinTable() // * Owner of the relationship
   @ManyToMany(() => Flavor, (flavor) => flavor.coffees, { cascade: true })
   flavors: Flavor[];
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

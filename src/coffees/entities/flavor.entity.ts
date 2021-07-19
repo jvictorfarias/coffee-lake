@@ -1,4 +1,11 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Coffee } from './coffee.entity';
 
 @Entity()
@@ -11,4 +18,10 @@ export class Flavor {
 
   @ManyToMany(() => Coffee, (coffee) => coffee.flavors)
   coffees: Coffee[];
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }
